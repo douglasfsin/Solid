@@ -19,7 +19,7 @@ https://www.linkedin.com/in/stevenandrewsmith/
 
 
 # Testes
-    Rode os testes com o docker acessando via linha de comando  o o diretorio /docker e executando o comando abaixo:
-        docker-compose up --build
+Rode os testes com o docker acessando via linha de comando o diretorio /docker e executando o comando abaixo:
+docker-compose up --build
 
-    *** O "--build" força a reconstrução das imagens dentro do arquivo .yml de configuração do compose.
+*** O "--build" força a reconstrução das imagens dentro do arquivo .yml de configuração do compose.

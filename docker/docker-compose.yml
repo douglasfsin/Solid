@@ -9,6 +9,19 @@ services:
       dockerfile: ./Daycoval.Solid.Test/Dockerfile
     command: dotnet test  
 
+  solid-sqlserver:
+    container_name: solid-sqlserver
+    build:
+      context: ../docker
+      dockerfile: ./sqlserver/Dockerfile
+    environment:
+      MSSQL_SA_PASSWORD: "Solid@123."
+      MSSQL_PID: "Express"
+      ACCEPT_EULA: "Y"
+
+    ports:
+      - '1433:1433'
+
   solid-pedido-api:
     image: solid/pedido-api:latest
     container_name: solid-pedido-api
@@ -21,4 +34,6 @@ services:
       - ASPNETCORE_ENVIROMENT=Development
       - ASPNETCORE_URLS=http://*:5001
     depends_on:
+      - solid-sqlserver
       - solid-tests
+
