@@ -1,0 +1,10 @@
+version : "3"
+
+services:
+  solid-tests:
+    image: solid/tests:latest
+    container_name: solid-tests
+    build:
+      context: ../src
+      dockerfile: ./Daycoval.Solid.Test/Dockerfile
+    command: dotnet test  
