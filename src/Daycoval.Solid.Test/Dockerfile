@@ -7,4 +7,4 @@ RUN dotnet restore "src/Daycoval.Solid.Test/Daycoval.Solid.Test.csproj"
 COPY . .
 WORKDIR "/src/Daycoval.Solid.Test"
 RUN dotnet build 
-RUN dotnet test
+

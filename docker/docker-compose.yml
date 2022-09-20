@@ -8,3 +8,17 @@ services:
       context: ../src
       dockerfile: ./Daycoval.Solid.Test/Dockerfile
     command: dotnet test  
+
+  solid-pedido-api:
+    image: solid/pedido-api:latest
+    container_name: solid-pedido-api
+    build:
+      context: ../src
+      dockerfile: ./Daycoval.Solid.Pedido.API/Dockerfile
+    ports:
+      - "5001:5001"
+    environment:
+      - ASPNETCORE_ENVIROMENT=Development
+      - ASPNETCORE_URLS=http://*:5001
+    depends_on:
+      - solid-tests

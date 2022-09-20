@@ -5,7 +5,9 @@ VisualStudioVersion = 17.3.32804.467
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Daycoval.Solid.Domain", "Daycoval.Solid.Domain\Daycoval.Solid.Domain.csproj", "{E6CBAE77-CEA4-4C9F-AD74-17B8C8612756}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Daycoval.Solid.Test", "Daycoval.Solid.Test\Daycoval.Solid.Test.csproj", "{55B2D589-BD42-4F50-8A26-0859E4C0C052}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Daycoval.Solid.Test", "Daycoval.Solid.Test\Daycoval.Solid.Test.csproj", "{55B2D589-BD42-4F50-8A26-0859E4C0C052}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Daycoval.Solid.Pedido.API", "Daycoval.Solid.Pedido.API\Daycoval.Solid.Pedido.API.csproj", "{8B13F202-5F12-4D58-A9BB-25E2BF346C18}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{55B2D589-BD42-4F50-8A26-0859E4C0C052}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{55B2D589-BD42-4F50-8A26-0859E4C0C052}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{55B2D589-BD42-4F50-8A26-0859E4C0C052}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B13F202-5F12-4D58-A9BB-25E2BF346C18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B13F202-5F12-4D58-A9BB-25E2BF346C18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B13F202-5F12-4D58-A9BB-25E2BF346C18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B13F202-5F12-4D58-A9BB-25E2BF346C18}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
