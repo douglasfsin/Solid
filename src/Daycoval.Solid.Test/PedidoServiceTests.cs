@@ -48,7 +48,7 @@ namespace Daycoval.Solid.Test
             var exception = Assert.Throws<ExternalException>(() => pedidoService.VerificarCarrinhoPago(carrinho, estoqueService));
 
             // Assert
-            Assert.Equal("O pagamento n„o foi efetuado.", exception.Message);
+            Assert.Equal("O pagamento n√£o foi efetuado.", exception.Message);
         }
     }
 }
