@@ -6,7 +6,7 @@ using System.Drawing;
 
 namespace Daycoval.Solid.Domain.Entidades
 {
-    public class Produto : Entity
+    public abstract class Produto  : Entity
     {
         public string Descricao { get; set; }
         public decimal Valor { get; set; }
@@ -14,18 +14,7 @@ namespace Daycoval.Solid.Domain.Entidades
         public decimal ValorImposto { get; set; }
         public TipoProduto TipoProduto { get; set; }
 
-
-        public void CalcularImposto()
-        {
-            Dictionary<TipoProduto, ICalculoImposto> estrategias = new Dictionary<TipoProduto, ICalculoImposto>() {
-                {TipoProduto.Eletronico, new Eletronico() },
-                {TipoProduto.Alimentos, new Alimentos() },
-                {TipoProduto.Superfulos, new Superfulos() },
-            };
-
-            ICalculoImposto estrategia = estrategias[TipoProduto];
-            estrategia.Calcular(Valor);
-        }
+        public abstract void CalcularImposto();
 
         public bool Valido()
         {
@@ -34,32 +23,27 @@ namespace Daycoval.Solid.Domain.Entidades
         }
     }
 
-    public interface ICalculoImposto
+    public class Eletronico : Produto
     {
-        decimal Calcular(decimal valor);
-    }
-
-    public class Eletronico : ICalculoImposto
-    {
-        public decimal Calcular(decimal valor)
+        public override void CalcularImposto()
         {
-            return valor * 0.15M;
+            ValorImposto = Valor * 0.15M;
         }
     }
 
-    public class Superfulos : ICalculoImposto
+    public class Superfulos : Produto
     {
-        public decimal Calcular(decimal valor)
+        public override void CalcularImposto()
         {
-            return valor * 0.20M;
+            ValorImposto = Valor * 0.20M;
         }
     }
 
-    public class Alimentos : ICalculoImposto
+    public class Alimentos : Produto
     {
-        public decimal Calcular(decimal valor)
+        public override void CalcularImposto()
         {
-            return valor * 0.05M;
+            ValorImposto = Valor * 0.05M;
         }
     }
 

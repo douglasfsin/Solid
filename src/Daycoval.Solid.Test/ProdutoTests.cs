@@ -1,18 +1,19 @@
 ﻿using Daycoval.Solid.Domain.Entidades;
 using System;
+using System.Collections.Generic;
 using Xunit;
 
 namespace Daycoval.Solid.Test
 {
     public class ProdutoTests
     {
+
         [Fact]
         public void Produto_Valido_CamposPreenchidos()
         {
             // Arrange 
-            var produto = new Produto();
+            var produto = new Alimentos();
             produto.Descricao = "Produto 1";
-            produto.TipoProduto = TipoProduto.Superfulos;
             produto.Quantidade = 1;
             produto.Valor = 10;
 
@@ -24,7 +25,7 @@ namespace Daycoval.Solid.Test
         public void Produto_Valido_CamposNaoPreenchidos()
         {
             // Arrange 
-            var produto = new Produto();
+            var produto = new Superfulos();
             produto.Descricao = "Produto 1";
 
             // Act & Assert
@@ -38,7 +39,24 @@ namespace Daycoval.Solid.Test
         public void Produto_CalcularImposto_CalcularImpostoCorretamente(string Descricao, TipoProduto tipoProduto, int quantidade, int valor, decimal resultado)
         {
             // Arrange 
-            var produto = new Produto();
+            var produto = new Alimentos();
+            produto.Descricao = Descricao;
+            produto.TipoProduto = tipoProduto;
+            produto.Quantidade = quantidade;
+            produto.Valor = valor;
+
+            // Act 
+            produto.CalcularImposto();
+
+            // Assert
+            Assert.Equal(resultado, produto.ValorImposto);
+
+        }
+
+        public void Produtos_CalcularImposto_CalcularImpostoCorretamente(string Descricao, TipoProduto tipoProduto, int quantidade, int valor, decimal resultado)
+        {
+            // Arrange 
+            var produto = new Alimentos();
             produto.Descricao = Descricao;
             produto.TipoProduto = tipoProduto;
             produto.Quantidade = quantidade;

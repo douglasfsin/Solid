@@ -20,6 +20,11 @@ namespace Daycoval.Solid.Domain.Entidades
             Pagamento = _pagamento;
         }
 
+        public void CalcularImpostos()
+        {
+            Produtos.ForEach(produto => produto.CalcularImposto());
+        }
+
         public bool Valido()
         {
             ValidationResult = new CarrinhoValidacao().Validate(this);

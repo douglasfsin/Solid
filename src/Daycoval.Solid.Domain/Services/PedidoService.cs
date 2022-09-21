@@ -27,6 +27,7 @@ namespace Daycoval.Solid.Domain.Services
         public void EfetuarPedido(Carrinho carrinho, bool notificarClienteEmail,
             bool notificarClienteSms)
         {
+            carrinho.CalcularImpostos();
             RealizarPagamento(carrinho);
 
             var estoque = new EstoqueService();
