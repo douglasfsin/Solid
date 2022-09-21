@@ -32,7 +32,6 @@ namespace Daycoval.Solid.Domain.Services
                     break;
             }
         }
-
     }
 
     public class Pagamento : IPagamento

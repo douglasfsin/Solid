@@ -1,6 +1,8 @@
 ﻿using FluentValidation;
 using FluentValidation.Results;
 using System;
+using System.Collections.Generic;
+using System.Drawing;
 
 namespace Daycoval.Solid.Domain.Entidades
 {
@@ -15,26 +17,49 @@ namespace Daycoval.Solid.Domain.Entidades
 
         public void CalcularImposto()
         {
-            switch (TipoProduto)
-            {
-                case TipoProduto.Eletronico:
-                    ValorImposto = Valor * 0.15M;
-                    break;
-                case TipoProduto.Alimentos:
-                    ValorImposto = Valor * 0.05M;
-                    break;
-                case TipoProduto.Superfulos:
-                    ValorImposto = Valor * 0.20M;
-                    break;
-                default:
-                    throw new ArgumentException("O tipo de produto informado não está disponível.");
-            }
+            Dictionary<TipoProduto, ICalculoImposto> estrategias = new Dictionary<TipoProduto, ICalculoImposto>() {
+                {TipoProduto.Eletronico, new Eletronico() },
+                {TipoProduto.Alimentos, new Alimentos() },
+                {TipoProduto.Superfulos, new Superfulos() },
+            };
+
+            ICalculoImposto estrategia = estrategias[TipoProduto];
+            estrategia.Calcular(Valor);
         }
 
         public bool Valido()
         {
             ValidationResult = new ProdutoValidacao().Validate(this);
             return ValidationResult.IsValid;
+        }
+    }
+
+    public interface ICalculoImposto
+    {
+        decimal Calcular(decimal valor);
+    }
+
+    public class Eletronico : ICalculoImposto
+    {
+        public decimal Calcular(decimal valor)
+        {
+            return valor * 0.15M;
+        }
+    }
+
+    public class Superfulos : ICalculoImposto
+    {
+        public decimal Calcular(decimal valor)
+        {
+            return valor * 0.20M;
+        }
+    }
+
+    public class Alimentos : ICalculoImposto
+    {
+        public decimal Calcular(decimal valor)
+        {
+            return valor * 0.05M;
         }
     }
 

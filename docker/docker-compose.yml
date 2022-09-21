@@ -21,6 +21,8 @@ services:
 
     ports:
       - '1433:1433'
+    expose:
+      - 1433  
 
   solid-pedido-api:
     image: solid/pedido-api:latest
