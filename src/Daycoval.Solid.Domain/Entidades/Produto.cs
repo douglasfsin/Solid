@@ -1,12 +1,9 @@
 ﻿using FluentValidation;
 using FluentValidation.Results;
-using System;
-using System.Collections.Generic;
-using System.Drawing;
 
 namespace Daycoval.Solid.Domain.Entidades
 {
-    public abstract class Produto  : Entity
+    public abstract class Produto : Entity
     {
         public string Descricao { get; set; }
         public decimal Valor { get; set; }
@@ -20,30 +17,6 @@ namespace Daycoval.Solid.Domain.Entidades
         {
             ValidationResult = new ProdutoValidacao().Validate(this);
             return ValidationResult.IsValid;
-        }
-    }
-
-    public class Eletronico : Produto
-    {
-        public override void CalcularImposto()
-        {
-            ValorImposto = Valor * 0.15M;
-        }
-    }
-
-    public class Superfulos : Produto
-    {
-        public override void CalcularImposto()
-        {
-            ValorImposto = Valor * 0.20M;
-        }
-    }
-
-    public class Alimentos : Produto
-    {
-        public override void CalcularImposto()
-        {
-            ValorImposto = Valor * 0.05M;
         }
     }
 
@@ -67,8 +40,6 @@ namespace Daycoval.Solid.Domain.Entidades
 
             RuleFor(p => p.TipoProduto)
                 .NotNull().WithMessage("O campo TipoProduto deve ser preenchido.");
-
         }
     }
-
 }
